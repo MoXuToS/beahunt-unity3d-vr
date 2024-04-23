@@ -16,12 +16,12 @@ public class NPC : MonoBehaviour
         
     }
 
-    public Mesh;
+    public Mesh mesh;
 
     /// <summary>
     /// Отвечает за передвижение персонажей
     /// </summary>
-    public override void Move(Vector3 direction)
+    public void Move(Vector3 direction)
     {
 
     }
@@ -29,7 +29,7 @@ public class NPC : MonoBehaviour
     /// <summary>
     /// Отвечает за связь с движениями
     /// </summary>
-    public override void DestroyNPC()
+    public void DestroyNPC()
     {
 
     }
