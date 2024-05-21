@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Manticore : NPC
+public class Dementor : NPC
 {  
     // Добавить название спела
-    AvadaCedavra AvadaCedavra = new AvadaCedavra();
+    Patronus patronus = new Patronus();
 
     /// <summary>
     /// Отвечает за связь с движениями уничтожения
     /// </summary>
     public void DestroyNPC()
     {
-        if(AvadaCedavra.CompareSpellPattern() == true)
-            print("Manticore has destroyed");
+        if(patronus.CompareSpellPattern() == true)
+            print("Dementor leave from us");
     }
 }

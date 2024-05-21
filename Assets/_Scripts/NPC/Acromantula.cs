@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dementor : NPC
+public class Acromantula : NPC
 {  
     // Добавить название спела
     AvadaCedavra AvadaCedavra = new AvadaCedavra();
@@ -13,6 +13,6 @@ public class Dementor : NPC
     public void DestroyNPC()
     {
         if(AvadaCedavra.CompareSpellPattern() == true)
-            print("Manticore has destroyed");
+            print("Acromantula has destroyed");
     }
 }

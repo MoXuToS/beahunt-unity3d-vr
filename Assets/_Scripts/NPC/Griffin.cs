@@ -5,14 +5,14 @@ using UnityEngine;
 public class Griffin : NPC
 {  
     // Добавить название спела
-    AvadaCedavra AvadaCedavra = new AvadaCedavra();
+    Brachiabindo brachiabindo = new Brachiabindo();
 
     /// <summary>
     /// Отвечает за связь с движениями уничтожения
     /// </summary>
     public void DestroyNPC()
     {
-        if(AvadaCedavra.CompareSpellPattern() == true)
-            print("Manticore has destroyed");
+        if(brachiabindo.CompareSpellPattern() == true)
+            print("Griffin has catched");
     }
 }
