@@ -8,34 +8,36 @@ public class DayCycleManager : MonoBehaviour
 {
     //#0 - восход
     //#0.5 - закат
+   //#0.5-1 - ночь
 
     [Range(0, 1)]
-    public float TimeOfDay;
-    public float DayDuration = 30.0f;
+    public float TimeOfDay;//счЄтчик времени
 
-    private float SunIntensity;
-    private float MoonIntensity;
+    public float DayDuration = 30.0f;//врем€, сколько будет длитьс€ день
 
-    public Material DaySkybox;
-    public Material NightSkybox;
+    private float SunIntensity;//€ркость света солнца
+    private float MoonIntensity;//€ркость света луны
 
-    public GameObject AudioManager;
-    public AudioClip DayMusic;
-    public AudioClip NightMusic;
+    public Material DaySkybox;//скайбокс дн€
+    public Material NightSkybox;//скайбокс ночи
 
-    public AnimationCurve TimeCurveSun;
-    public AnimationCurve TimeCurveMoon;
-    public AnimationCurve TimeCurveSkybox;
+    public GameObject AudioManager;//управление музыкой
+    public AudioClip DayMusic;//дневна€ музыка
+    public AudioClip NightMusic;//ночна€ музыка
+
+    public AnimationCurve TimeCurveSun;//график кривой, как будет измен€тьс€ €ркость света солнца
+    public AnimationCurve TimeCurveMoon;//график кривой, как будет измен€тьс€ €ркость света луны
+    public AnimationCurve TimeCurveSkybox;//график, как будет измен€тьс€ скайбокс в зависимости от дн€ и ночи
 
 
-    public ParticleSystem stars;
+    public ParticleSystem stars;//система частиц дл€ звЄзд
 
-    public Light Sun;
-    public Light Moon;
+    public Light Sun;//источник света солнце
+    public Light Moon;//источник света луна
 
-    private bool IsMusicDay = false;
-    private bool IsMusicNight = false;
-    private AudioSource component;
+    private bool IsMusicDay = false;//переменна€, котора€ провер€ет состо€ние активности музыки дн€
+    private bool IsMusicNight = false;//переменна€, котора€ провер€ет состо€ние активности музыки ночи
+    private AudioSource component;//музыкальный трэк
 
     void Start()
     {
@@ -47,7 +49,7 @@ public class DayCycleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TimeOfDay += Time.deltaTime / DayDuration;
+        TimeOfDay += Time.deltaTime / DayDuration;//счЄтчик дн€
         if(TimeOfDay >= 1) { TimeOfDay -= 1; }//начать день по новой
 
         RenderSettings.skybox.Lerp(NightSkybox, DaySkybox, TimeCurveSkybox.Evaluate(TimeOfDay));//мен€ть skybox в зависимости от времени

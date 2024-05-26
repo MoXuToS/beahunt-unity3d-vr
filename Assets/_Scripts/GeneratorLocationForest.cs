@@ -8,7 +8,7 @@ public class GeneratorLocationForest: MonoBehaviour
     public int SizeLocation = 500; // Overall size of the forest (a square of SizeLocation X SizeLocation).
     public int elementSpacing = 5; // The spacing between element placements. Basically grid size.
 
-    public Element[] elements;
+    public Element[] elements;//массив префабов для генерации объектов terrain
 
     private void Start()
     {
