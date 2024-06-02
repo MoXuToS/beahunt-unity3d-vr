@@ -32,9 +32,9 @@ public class GeneratorLocationForest: MonoBehaviour
 
                         // Add random elements to element placement.
                         Vector3 position = new Vector3(x, 0f, z);
-                        Vector3 offset = new Vector3(Random.Range(-0.35f, 0.55f), 0f, Random.Range(-1.25f, 1.25f));
+                        Vector3 offset = new Vector3(Random.Range(-2.35f, 2.55f), 0f, Random.Range(-2.25f, 2.25f));
                         Vector3 rotation = new Vector3(Random.Range(0, 5f), Random.Range(0, 360f), Random.Range(0, 5f));
-                        Vector3 scale = Vector3.one * Random.Range(1.0f, 1.25f);
+                        Vector3 scale = Vector3.one * Random.Range(3.0f, 3.25f);
 
                         // Instantiate and place element in world.
                         GameObject newElement = Instantiate(element.GetRandom());

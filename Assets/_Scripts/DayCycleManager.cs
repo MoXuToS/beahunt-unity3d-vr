@@ -52,8 +52,8 @@ public class DayCycleManager : MonoBehaviour
         TimeOfDay += Time.deltaTime / DayDuration;//счётчик дня
         if(TimeOfDay >= 1) { TimeOfDay -= 1; }//начать день по новой
 
-        RenderSettings.skybox.Lerp(NightSkybox, DaySkybox, TimeCurveSkybox.Evaluate(TimeOfDay));//менять skybox в зависимости от времени
-        RenderSettings.sun = TimeCurveSkybox.Evaluate(TimeOfDay) >= 0.05f ? Sun: Moon;
+        RenderSettings.skybox.Lerp(DaySkybox,NightSkybox, TimeCurveSkybox.Evaluate(TimeOfDay));//менять skybox в зависимости от времени
+        RenderSettings.sun = TimeCurveSkybox.Evaluate(TimeOfDay) >= 0.5f ? Moon: Sun;
 
         if (RenderSettings.sun == Sun)
         {
@@ -90,7 +90,7 @@ public class DayCycleManager : MonoBehaviour
         module.startColor = new Color(1, 1, 1, 1 - TimeCurveSkybox.Evaluate(TimeOfDay));//прозрачность звёзд
 
         Sun.transform.localRotation = Quaternion.Euler(TimeOfDay * 360.0f,180,0);//положение солнца
-        Moon.transform.localRotation = Quaternion.Euler(TimeOfDay * 360.0f + 180.0f, 180, 0);//пооложение луны
+        Moon.transform.localRotation = Quaternion.Euler(TimeOfDay * 360.0f+180, 180, 0);//пооложение луны
         Sun.intensity = SunIntensity * TimeCurveSun.Evaluate(TimeOfDay);//яркость солнца
         Moon.intensity = MoonIntensity * TimeCurveMoon.Evaluate(TimeOfDay);//яркость луны
     }
