@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1220204242}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -12028,24 +12028,30 @@ MonoBehaviour:
   - name: Plants
     density: 8
     prefabs:
-    - {fileID: 4749918658631221799, guid: b43fde9392d4f734dacf33ca5e18b2dd, type: 3}
-    - {fileID: 4749918658631221799, guid: b43fde9392d4f734dacf33ca5e18b2dd, type: 3}
-    - {fileID: 6303743543184162783, guid: 1b23812a5f4daa04eab602b52a62e911, type: 3}
-    - {fileID: 6299508145186573122, guid: 353471a085522e34a85081d603e5b015, type: 3}
-    - {fileID: 4628284441596811238, guid: ac675a855ff49e04597e661bf4bc74ce, type: 3}
-    - {fileID: 5380895682773476401, guid: 9e2788eb46c961445a69590bba9941b4, type: 3}
+    - {fileID: 44114109082824063, guid: f282302324b91b0438c6841b2f22dd33, type: 3}
+    - {fileID: 8607778230406552461, guid: 6b1e5b0344a31094583c98cde68bccab, type: 3}
+    - {fileID: 3882531666846688043, guid: 51e41102f954c87478cb792794df9045, type: 3}
+    - {fileID: 8531200904175085377, guid: 579bf0b778ce56543925f8074daa6a33, type: 3}
+    - {fileID: 6406303761606480854, guid: 5eaedd45b7ebba848a3d6d9bd595b97f, type: 3}
+    - {fileID: 4023848071604697589, guid: ee8aab86ded010845988d0980b9531c1, type: 3}
+    - {fileID: 5512761954765108328, guid: 62d2626edbc851648af27e34b58fe0f7, type: 3}
+    - {fileID: 1381860157466557666, guid: 9fe7832615c24f445aa3e21a644c091a, type: 3}
+    - {fileID: 8745400475744743518, guid: 1112f94fc496a204eae5b5b46a9b0887, type: 3}
   - name: Trees
     density: 8
     prefabs:
-    - {fileID: 1335726306580732, guid: 23f312332b5cd5542ba196450880e89b, type: 3}
-    - {fileID: 1656226002977108, guid: e191e21fcb275784a9f8b6d08dcd932c, type: 3}
-    - {fileID: 1377331622712542, guid: b9eb627f7bb4c1748829f3f01ce72b68, type: 3}
-    - {fileID: 1250690161900600, guid: e6f343cc46467004f811ce2ba3a3841b, type: 3}
+    - {fileID: 8181618095951900875, guid: 18d4cf0904e501e458074a9bd0794dc3, type: 3}
+    - {fileID: 7724311474116133410, guid: 70ebf8514a6d94049bee08636a62f037, type: 3}
+    - {fileID: 8462962911669332834, guid: 7aa4f3d75457007438efc6b4c1f853a4, type: 3}
+    - {fileID: 2067693944368940893, guid: 55aa94a37756bf94b9ceb69b13081845, type: 3}
+    - {fileID: 7019731197215941479, guid: 297a0a2cc06676047a31d6eb71a8cb60, type: 3}
   - name: Rocks
     density: 8
     prefabs:
-    - {fileID: 1086353713108280, guid: 10dcade9ef34ab642846c4b889ac76e7, type: 3}
-    - {fileID: 1793648613423140, guid: 88cc729ed2bce0b458f679b575dab345, type: 3}
+    - {fileID: 1625226309453114182, guid: 9d01f495e63e26e4faa19e789e0e3028, type: 3}
+    - {fileID: 5783539797277285487, guid: 18707a7bab9e062468011383a9074b53, type: 3}
+    - {fileID: 3823874762274984531, guid: ab790b7d5e1c4f54084c5f93ee9d6eac, type: 3}
+    - {fileID: 3017540250320698098, guid: 751e73a364527164fa3151e766cc0c72, type: 3}
 --- !u!114 &1294173741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12091,7 +12097,7 @@ Terrain:
   m_DetailObjectDistance: 80
   m_DetailObjectDensity: 1
   m_HeightmapPixelError: 5
-  m_SplatMapDistance: 1000
+  m_SplatMapDistance: 832
   m_HeightmapMaximumLOD: 0
   m_ShadowCastingMode: 2
   m_DrawHeightmap: 1
@@ -12099,7 +12105,7 @@ Terrain:
   m_DrawTreesAndFoliage: 1
   m_StaticShadowCaster: 0
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 2100000, guid: fd285dcc5cfc4c9488de0bc9e6659a2b, type: 2}
+  m_MaterialTemplate: {fileID: 2100000, guid: 520af2beea5de3441ba800c9ff9c5a70, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -12367,7 +12373,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -565.00916, y: 474.3147}
+  m_AnchoredPosition: {x: -565.00916, y: 474.31473}
   m_SizeDelta: {x: 476.49304, y: 771.341}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1601401491

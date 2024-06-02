@@ -6,17 +6,17 @@ public class GeneratorLocationForest: MonoBehaviour
 {
     
     public int SizeLocation = 500; // Overall size of the forest (a square of SizeLocation X SizeLocation).
-    public int elementSpacing = 5; // The spacing between element placements. Basically grid size.
+    public int elementSpacing = 10; // The spacing between element placements. Basically grid size.
 
-    public Element[] elements;//массив префабов для генерации объектов terrain
+    public Element[] elements;//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ terrain
 
     private void Start()
     {
 
         // Loop through all the positions within our forest boundary.
-        for (int x = 1; x < SizeLocation; x += elementSpacing)
+        for (int x = 1; x < SizeLocation; x += elementSpacing*5)
         {
-            for (int z = 1; z < SizeLocation; z += elementSpacing)
+            for (int z = 1; z < SizeLocation; z += elementSpacing*5)
             {
 
                 // For each position, loop through each element...
@@ -29,25 +29,108 @@ public class GeneratorLocationForest: MonoBehaviour
                     // Check if the element can be placed.
                     if (element.CanPlace())
                     {
+                        if(element.name == "Rocks")
+                        {
+                            // Add random elements to element placement.
+                            Vector3 position = new Vector3(x, 0f, z);
+                            Vector3 offset = new Vector3(Random.Range(-2.35f, 2.55f), 0f, Random.Range(-2.25f, 2.25f));
+                            Vector3 rotation = new Vector3(Random.Range(0, 5f), Random.Range(0, 360f), Random.Range(0, 5f));
+                            Vector3 scale = Vector3.one * Random.Range(3f, 4.25f);
 
-                        // Add random elements to element placement.
-                        Vector3 position = new Vector3(x, 0f, z);
-                        Vector3 offset = new Vector3(Random.Range(-2.35f, 2.55f), 0f, Random.Range(-2.25f, 2.25f));
-                        Vector3 rotation = new Vector3(Random.Range(0, 5f), Random.Range(0, 360f), Random.Range(0, 5f));
-                        Vector3 scale = Vector3.one * Random.Range(3.0f, 3.25f);
+                            // Instantiate and place element in world.
+                            GameObject newElement = Instantiate(element.GetRandom());
+                            newElement.transform.SetParent(transform);
+                            newElement.transform.position = Clamp(position + offset,1,500);
+                            newElement.transform.eulerAngles = rotation;
+                            newElement.transform.localScale = scale;
 
-                        // Instantiate and place element in world.
-                        GameObject newElement = Instantiate(element.GetRandom());
-                        newElement.transform.SetParent(transform);
-                        newElement.transform.position = Clamp(position + offset,1,500);
-                        newElement.transform.eulerAngles = rotation;
-                        newElement.transform.localScale = scale;
+                            // Break out of this for loop to ensure we don't place another element at this position.
+                            break;
+                        }
 
-                        // Break out of this for loop to ensure we don't place another element at this position.
-                        break;
 
                     }
 
+                }
+            }
+        }
+        
+        // Loop through all the positions within our forest boundary.
+        for (int x = 1; x < SizeLocation; x += elementSpacing*2)
+        {
+            for (int z = 1; z < SizeLocation; z += elementSpacing*2)
+            {
+
+                // For each position, loop through each element...
+                for (int i = 0; i < elements.Length; i++)
+                {
+
+                    // Get the current element.
+                    Element element = elements[i];
+
+                    // Check if the element can be placed.
+                    if (element.CanPlace())
+                    {
+                        if(element.name == "Plants")
+                        {
+                            // Add random elements to element placement.
+                            Vector3 position = new Vector3(x, 0f, z);
+                            Vector3 offset = new Vector3(Random.Range(-2.35f, 2.55f), 0f, Random.Range(-2.25f, 2.25f));
+                            Vector3 rotation = new Vector3(Random.Range(0, 5f), Random.Range(0, 360f), Random.Range(0, 5f));
+                            Vector3 scale = Vector3.one * Random.Range(3f, 10.25f);
+
+                            // Instantiate and place element in world.
+                            GameObject newElement = Instantiate(element.GetRandom());
+                            newElement.transform.SetParent(transform);
+                            newElement.transform.position = Clamp(position + offset,1,500);
+                            newElement.transform.eulerAngles = rotation;
+                            newElement.transform.localScale = scale;
+
+                            // Break out of this for loop to ensure we don't place another element at this position.
+                            break;
+                        }
+
+
+                    }
+
+                }
+            }
+        }
+        // Loop through all the positions within our forest boundary.
+        for (int x = 1; x < SizeLocation; x += elementSpacing*5)
+        {
+            for (int z = 1; z < SizeLocation; z += elementSpacing*5)
+            {
+
+                // For each position, loop through each element...
+                for (int i = 0; i < elements.Length; i++)
+                {
+
+                    // Get the current element.
+                    Element element = elements[i];
+
+                    // Check if the element can be placed.
+                    if (element.CanPlace())
+                    {
+                        if(element.name == "Trees")
+                        {
+                                    // Add random elements to element placement.
+                            Vector3 position = new Vector3(x+5, 0f, z+5);
+                            Vector3 offset = new Vector3(Random.Range(-2.35f, 2.55f), 0f, Random.Range(-2.25f, 2.25f));
+                            Vector3 rotation = new Vector3(Random.Range(0, 5f), Random.Range(0, 360f), Random.Range(0, 5f));
+                            Vector3 scale = Vector3.one * Random.Range(15f, 27.25f);
+
+                            // Instantiate and place element in world.
+                            GameObject newElement = Instantiate(element.GetRandom());
+                            newElement.transform.SetParent(transform);
+                            newElement.transform.position = Clamp(position + offset,100,500);
+                            newElement.transform.eulerAngles = rotation;
+                            newElement.transform.localScale = scale;
+
+                            // Break out of this for loop to ensure we don't place another element at this position.
+                            break;
+                        }
+                    }
                 }
             }
         }
