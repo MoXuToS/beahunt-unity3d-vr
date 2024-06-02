@@ -8,34 +8,36 @@ public class DayCycleManager : MonoBehaviour
 {
     //#0 - восход
     //#0.5 - закат
+   //#0.5-1 - ночь
 
     [Range(0, 1)]
-    public float TimeOfDay;
-    public float DayDuration = 30.0f;
+    public float TimeOfDay;//счётчик времени
 
-    private float SunIntensity;
-    private float MoonIntensity;
+    public float DayDuration = 30.0f;//время, сколько будет длиться день
 
-    public Material DaySkybox;
-    public Material NightSkybox;
+    private float SunIntensity;//яркость света солнца
+    private float MoonIntensity;//яркость света луны
 
-    public GameObject AudioManager;
-    public AudioClip DayMusic;
-    public AudioClip NightMusic;
+    public Material DaySkybox;//скайбокс дня
+    public Material NightSkybox;//скайбокс ночи
 
-    public AnimationCurve TimeCurveSun;
-    public AnimationCurve TimeCurveMoon;
-    public AnimationCurve TimeCurveSkybox;
+    public GameObject AudioManager;//управление музыкой
+    public AudioClip DayMusic;//дневная музыка
+    public AudioClip NightMusic;//ночная музыка
+
+    public AnimationCurve TimeCurveSun;//график кривой, как будет изменяться яркость света солнца
+    public AnimationCurve TimeCurveMoon;//график кривой, как будет изменяться яркость света луны
+    public AnimationCurve TimeCurveSkybox;//график, как будет изменяться скайбокс в зависимости от дня и ночи
 
 
-    public ParticleSystem stars;
+    public ParticleSystem stars;//система частиц для звёзд
 
-    public Light Sun;
-    public Light Moon;
+    public Light Sun;//источник света солнце
+    public Light Moon;//источник света луна
 
-    private bool IsMusicDay = false;
-    private bool IsMusicNight = false;
-    private AudioSource component;
+    private bool IsMusicDay = false;//переменная, которая проверяет состояние активности музыки дня
+    private bool IsMusicNight = false;//переменная, которая проверяет состояние активности музыки ночи
+    private AudioSource component;//музыкальный трэк
 
     void Start()
     {
@@ -47,11 +49,11 @@ public class DayCycleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TimeOfDay += Time.deltaTime / DayDuration;
+        TimeOfDay += Time.deltaTime / DayDuration;//счётчик дня
         if(TimeOfDay >= 1) { TimeOfDay -= 1; }//начать день по новой
 
-        RenderSettings.skybox.Lerp(NightSkybox, DaySkybox, TimeCurveSkybox.Evaluate(TimeOfDay));//менять skybox в зависимости от времени
-        RenderSettings.sun = TimeCurveSkybox.Evaluate(TimeOfDay) >= 0.05f ? Sun: Moon;
+        RenderSettings.skybox.Lerp(DaySkybox,NightSkybox, TimeCurveSkybox.Evaluate(TimeOfDay));//менять skybox в зависимости от времени
+        RenderSettings.sun = TimeCurveSkybox.Evaluate(TimeOfDay) >= 0.5f ? Moon: Sun;
 
         if (RenderSettings.sun == Sun)
         {
@@ -88,7 +90,7 @@ public class DayCycleManager : MonoBehaviour
         module.startColor = new Color(1, 1, 1, 1 - TimeCurveSkybox.Evaluate(TimeOfDay));//прозрачность звёзд
 
         Sun.transform.localRotation = Quaternion.Euler(TimeOfDay * 360.0f,180,0);//положение солнца
-        Moon.transform.localRotation = Quaternion.Euler(TimeOfDay * 360.0f + 180.0f, 180, 0);//пооложение луны
+        Moon.transform.localRotation = Quaternion.Euler(TimeOfDay * 360.0f+180, 180, 0);//пооложение луны
         Sun.intensity = SunIntensity * TimeCurveSun.Evaluate(TimeOfDay);//яркость солнца
         Moon.intensity = MoonIntensity * TimeCurveMoon.Evaluate(TimeOfDay);//яркость луны
     }
