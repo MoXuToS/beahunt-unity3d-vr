@@ -24,7 +24,8 @@ public class SplitTerrain : EditorWindow {
 	
 	// Add submenu
     [MenuItem("Dvornik/Terrain/Split Terrain")]
-	static void Init()
+    [System.Obsolete]
+    static void Init()
     {
 		
 		// Get existing open window or if none, make a new one:
@@ -53,8 +54,9 @@ public class SplitTerrain : EditorWindow {
 	{
     	return (x & (x - 1)) == 0;
 	}
-			
-	void SplitIt()
+
+    [System.Obsolete]
+    void SplitIt()
 	{
 		
 		if ( Selection.activeGameObject == null )
@@ -527,8 +529,9 @@ public class SplitTerrain : EditorWindow {
 		
 		
 	}
-	
-	void OnGUI()
+
+    [System.Obsolete]
+    void OnGUI()
     {
 					
 		if(GUILayout.Button("Split terrain"))
